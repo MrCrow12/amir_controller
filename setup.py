@@ -7,10 +7,8 @@ setup(
     install_requires=[
         'requests',
         'keyboard',
-        'time',
         'pynput',
         'pyperclip',
-        'os',
     ],
     author='amir',
     author_email='amirrobot64@gmail.com',
