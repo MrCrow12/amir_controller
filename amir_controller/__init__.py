@@ -1,1 +1,1 @@
-import amir_controller
+from .amir_controller import run
